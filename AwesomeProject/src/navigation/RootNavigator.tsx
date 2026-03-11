@@ -7,7 +7,7 @@ import {authService} from '../services/authService';
 import {notificationService} from '../services/notificationService';
 import {ActivityIndicator, View, StyleSheet} from 'react-native';
 import {colors} from '../utils/colors';
-import SplashScreen from 'react-native-splash-screen';
+import BootSplash from 'react-native-bootsplash';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,11 +33,7 @@ export const RootNavigator = () => {
     } finally {
       // Hide splash screen after checking auth
       setTimeout(() => {
-        try {
-          SplashScreen.hide();
-        } catch {
-          console.log('Splash screen already hidden or not configured');
-        }
+        BootSplash.hide({fade: true});
       }, 1000);
     }
   };

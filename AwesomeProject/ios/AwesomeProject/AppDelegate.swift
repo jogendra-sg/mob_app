@@ -2,7 +2,7 @@ import UIKit
 import React
 import React_RCTAppDelegate
 import ReactAppDependencyProvider
-import RNSplashScreen
+import RNBootSplash
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     )
     
     // Show splash screen
-    RNSplashScreen.show()
+    RNBootSplash.initWithStoryboard("BootSplash", rootView: window!.rootViewController!.view)
 
     return true
   }

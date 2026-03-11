@@ -8,6 +8,9 @@ require Pod::Executable.execute_command('node', ['-p',
 platform :ios, min_ios_version_supported
 prepare_react_native_project!
 
+# Force use of prebuilt Hermes (doesn't require cmake)
+ENV['USE_HERMES'] = '1'
+
 linkage = ENV['USE_FRAMEWORKS']
 if linkage != nil
   Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
@@ -16,6 +19,9 @@ end
 
 target 'AwesomeProject' do
   config = use_native_modules!
+  
+  # Enable modular headers for Firebase compatibility
+  use_modular_headers!
 
   use_react_native!(
     :path => config[:reactNativePath],
